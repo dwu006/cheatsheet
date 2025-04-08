@@ -6,7 +6,10 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "cheatsheesh",
+  title: {
+    default: "cheatsheesh",
+    template: "cheatsheesh"
+  },
   description:
     "Upload your content, choose your size, and download beautifully formatted cheatsheets for any subject or topic.",
 }
