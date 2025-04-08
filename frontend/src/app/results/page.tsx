@@ -1,13 +1,15 @@
 "use client"
 
+import { Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Download, Printer, Share2, FileText } from "lucide-react"
 
-export default function ResultsPage() {
+function ResultsContent() {
   const searchParams = useSearchParams()
   const size = searchParams.get("size") || "index-card"
   const fileCount = Number.parseInt(searchParams.get("files") || "0")
@@ -111,9 +113,11 @@ export default function ResultsPage() {
               </div>
 
               <div className="text-center">
-                <Button variant="link" className="text-purple-600 dark:text-purple-400" href="/create">
-                  Create Another Cheatsheet
-                </Button>
+                <Link href="/create">
+                  <Button variant="link" className="text-purple-600 dark:text-purple-400" asChild>
+                    Create Another Cheatsheet
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -121,6 +125,14 @@ export default function ResultsPage() {
       </main>
       <Footer />
     </div>
+  )
+}
+
+export default function ResultsPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
+      <ResultsContent />
+    </Suspense>
   )
 }
 

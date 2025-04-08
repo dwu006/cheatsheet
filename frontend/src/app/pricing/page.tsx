@@ -117,7 +117,7 @@ export default function PricingPage() {
                 </CardContent>
                 <CardFooter className="pb-8">
                   <Button className="w-full bg-purple-600 hover:bg-purple-700" asChild>
-                    <Link href="/create">Coming Soon ...</Link>
+                    <Link href="#">Coming Soon ...</Link>
                   </Button>
                 </CardFooter>
               </Card>
